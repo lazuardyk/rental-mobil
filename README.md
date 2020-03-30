@@ -6,18 +6,18 @@ Aplikasi ini memudahkan tempat rental mobil untuk mengelola transaksi dan stok m
 Cara penggunaan aplikasi ini adalah:<br>
 1. Pertama-tama, admin bisa login menggunakan default akun yaitu ```admin:admin```<br>
 2. Lalu admin bisa membuat user/karyawan untuk login.<br>
-3. Setelah itu admin dan user bisa login di tampilan yang sama, dan secara otomatis tampilannya disesuaikan dengan rolenya masing-masing.<br>
+3. Setelah itu admin/user bisa login di tampilan yang sama, dan secara otomatis tampilannya disesuaikan dengan rolenya masing-masing.<br>
 
 Tampilan nya berisi fungsi-fungsi berdasarkan rolenya, yaitu:
 #### User:
 Fungsi/hak yang dimiliki User adalah:
 - Menambahkan pesanan sewa mobil
-- Menambahkan dan menghapus mobil yang tersedia
+- Melihat, menambahkan, dan menghapus mobil yang tersedia
 
 #### Admin:
 Fungsi/hak yang dimiliki Admin adalah:
 - Melihat riwayat transaksi
-- Menambahkan dan menghapus mobil yang tersedia
-- Menambahkan dan menghapus User
-- Menambahkan dan menghapus Admin
+- Melihat, menambahkan, dan menghapus mobil yang tersedia
+- Melihat, menambahkan, dan menghapus User
+- Melihat, menambahkan, dan menghapus Admin
 
