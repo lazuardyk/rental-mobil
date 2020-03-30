@@ -3,8 +3,11 @@ Merupakan aplikasi desktop untuk membantu manajemen rental mobil
 
 Aplikasi ini memudahkan tempat rental mobil untuk mengelola transaksi dan stok mobilnya. Autentikasi aplikasi ini terdiri dari 2 roles, yaitu User dan Admin. User disini diperuntukkan kepada karyawan rental, sedangkan Admin untuk pemilik rental.
 
-Cara menggunakan aplikasi ini adalah login dengan username dan password, lalu secara otomatis akan teridentifikasi role nya. Setiap role memiliki fungsi/haknya masing-masing.
-Berikut perbedaannya:
+Cara penggunaan aplikasi ini adalah:<br>
+Pertama-tama, admin bisa login menggunakan default akun yaitu ```admin:admin```<br>
+Lalu admin bisa membuat user/karyawan untuk login.<br>
+Setelah itu admin dan user bisa login di tampilan yang sama, dan secara otomatis tampilannya disesuaikan dengan rolenya masing-masing.<br>
+Tampilan nya berisi fungsi-fungsi berdasarkan rolenya, yaitu:
 
 #### User:
 Fungsi/hak yang dimiliki User adalah:
