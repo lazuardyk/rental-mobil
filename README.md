@@ -5,7 +5,7 @@ Aplikasi ini memudahkan tempat rental mobil untuk mengelola transaksi dan stok m
 
 Cara penggunaan aplikasi ini adalah:<br>
 1. Pertama-tama, admin bisa login menggunakan default akun yaitu ```admin:admin```<br>
-2. Lalu admin bisa membuat akun user untuk login.<br>
+2. Lalu admin bisa membuat akun user baru atau admin baru untuk login.<br>
 3. Setelah itu admin/user bisa login menggunakan akunnya masing-masing, dan secara otomatis tampilannya disesuaikan dengan rolenya masing-masing.<br>
 
 Tampilannya berisi fungsi-fungsi berdasarkan rolenya, yaitu:
