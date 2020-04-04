@@ -101,27 +101,27 @@ class ManageCar_Window(object):
         font.setWeight(75)
         item.setFont(font)
         self.tableWidget.setHorizontalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(0, 3, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(0, 4, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(0, 5, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(1, 0, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(0, 0, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(0, 1, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(0, 2, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(0, 3, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(0, 4, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(0, 5, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignCenter)
+        # self.tableWidget.setItem(1, 0, item)
         self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(109)
         self.tableWidget.horizontalHeader().setSortIndicatorShown(False)
@@ -144,7 +144,7 @@ class ManageCar_Window(object):
         self.comboBox.setGeometry(QtCore.QRect(40, 460, 121, 31))
         self.comboBox.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
+        # self.comboBox.addItem("")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(190, 430, 101, 16))
         self.label_10.setObjectName("label_10")
@@ -187,6 +187,7 @@ class ManageCar_Window(object):
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Warna:</span></p></body></html>"))
         self.label_6.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Tahun Pembuatan:</span></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "Tambah"))
+        self.pushButton.clicked.connect(self.pushAddCar)
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Daftar Mobil</span></p></body></html>"))
         self.tableWidget.setSortingEnabled(False)
         item = self.tableWidget.verticalHeaderItem(0)
@@ -207,13 +208,15 @@ class ManageCar_Window(object):
         item.setText(_translate("MainWindow", "Harga Sewa Per Hari"))
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
-        # count = 0
         for i in range(len(self.allcar)):
             count = 0
             for key, value in self.allcar[i].items():
-                print(key, value)
+                # print(key, value)
                 if key == "_id":
                     continue
+                item = QtWidgets.QTableWidgetItem()
+                item.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.tableWidget.setItem(i, count, item)
                 item = self.tableWidget.item(i, count)
                 if key == "price_per_day":
                     item.setText(_translate("MainWindow", self.rupiah_format(value)))
@@ -238,9 +241,44 @@ class ManageCar_Window(object):
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Form Hapus Mobil</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nomor Polisi:</span></p></body></html>"))
         self.pushButton_3.setText(_translate("MainWindow", "Hapus"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "B 123 K"))
+        self.list_plat = self.carcontroller.showAllPlatCar()
+        index_plat = 0
+        self.id_car = 0
+        for i in self.list_plat:
+            self.comboBox.addItem("")
+            for key, value in i.items():
+                self.comboBox.setItemText(index_plat, _translate("MainWindow", key))
+            index_plat += 1
+        # self.comboBox.setItemText(0, _translate("MainWindow", "B 123 K"))
+        self.comboBox.currentIndexChanged.connect(self.platComboChanged)
         self.label_10.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Merek Mobil:</span></p></body></html>"))
         self.label_11.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Model Mobil:</span></p></body></html>"))
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Toyota</span></p></body></html>"))
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Avanza</span></p></body></html>"))
         self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Harga Sewa Per Hari:</span></p></body></html>"))
+
+    def pushAddCar(self):
+        brand = self.lineEdit.text()
+        color = self.lineEdit_4.text()
+        model = self.lineEdit_2.text()
+        production_year = self.lineEdit_5.text()
+        license_plate = self.lineEdit_3.text()
+        price = self.label_6.text()
+        self.carcontroller.addCar(brand, model, color, license_plate, price, production_year)
+    
+    def platComboChanged(self, value):
+        # self.list_plat = self.carcontroller.showAllPlatCar()
+        plat_dict = self.list_plat[value]
+        for key, value in plat_dict.items():
+            self.id_car = value
+            id_plat = value
+        _translate = QtCore.QCoreApplication.translate
+        brand = self.carcontroller.getBrandCar(id_plat)
+        model = self.carcontroller.getModelCar(id_plat)
+        self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+brand+"</span></p></body></html>"))
+        self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+model+"</span></p></body></html>"))
+    
+    def pushDeleteCar(self):
+        self.carcontroller.deleteCar(self.id_car)
+    
+
