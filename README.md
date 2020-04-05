@@ -1,22 +1,12 @@
 # rental-mobil
 Merupakan aplikasi desktop untuk membantu manajemen rental mobil
 
-Aplikasi ini memudahkan tempat rental mobil untuk mengelola transaksi dan stok mobilnya. Autentikasi aplikasi ini terdiri dari 2 roles, yaitu User dan Admin. User disini diperuntukkan kepada karyawan rental, sedangkan Admin untuk pemilik rental.
+#### Hal yang Dibutuhkan:
+- Python 3 (https://www.python.org/downloads/)
+- MongoDB (https://www.mongodb.com/download-center/community)
+- Library python berupa: pyqt5, pymongo. (**akan otomatis diinstall di setup**)
 
-Cara penggunaan aplikasi ini adalah:<br>
-1. Pertama-tama, admin bisa login menggunakan default akun yaitu ```admin:admin```<br>
-2. Lalu admin bisa membuat akun user baru atau admin baru untuk login.<br>
-3. Setelah itu admin/user bisa login menggunakan akunnya masing-masing, dan secara otomatis tampilannya disesuaikan dengan rolenya masing-masing.<br>
-
-Tampilannya berisi fungsi-fungsi berdasarkan rolenya, yaitu:
-#### User:
-Fungsi/hak yang dimiliki User adalah:
-- Menambahkan pesanan sewa mobil
-- Melihat, menambahkan, dan menghapus mobil yang tersedia
-
-#### Admin:
-Fungsi/hak yang dimiliki Admin adalah:
-- Melihat riwayat transaksi
-- Melihat, menambahkan, dan menghapus mobil yang tersedia
-- Melihat, menambahkan, dan menghapus User
-- Melihat, menambahkan, dan menghapus Admin
+#### Cara Pakai:
+- Jalankan ```setup.py``` untuk pertama kali. Dengan tujuan menginstall library dan membuat database.
+- Jalankan ```main.py``` untuk memulai aplikasi
+- Login dengan akun default: ```user:user``` sebagai User dan ```admin:admin``` sebagai Admin.
