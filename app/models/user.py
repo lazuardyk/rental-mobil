@@ -14,8 +14,8 @@ class User:
     def getData(self):
         return self.col_users.find_one({"username":self.username})
     
-    def add(self, name, address, email, username, password, role):
-        dict_user = {"name":name, "address":address, "email":email, "username":username, "password":password, "role":role}
+    def add(self, name, address, email, username, password, phone, role):
+        dict_user = {"name":name, "address":address, "email":email, "phone":phone, "username":username, "password":password, "role":role}
         return self.col_users.insert_one(dict_user)
     
     def showAll(self):

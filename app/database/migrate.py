@@ -9,8 +9,8 @@ class Migrate:
         col_users.create_index("username", unique=True)
 
         dict_user = [
-            {"name":"Lazuardy User", "address":"Waru Doyong 123", "email": "user@user.com", "username":"user", "password":"user", "role":"user"},
-            {"name":"Lazuardy Admin", "address":"Waru Doyong 123", "email": "admin@admin.com", "username":"admin", "password":"admin", "role":"admin"}
+            {"name":"Lazuardy User", "address":"Waru Doyong 123", "email": "user@user.com", "phone":"081395863285", "username":"user", "password":"user", "role":"user"},
+            {"name":"Lazuardy Admin", "address":"Waru Doyong 123", "email": "admin@admin.com", "phone":"081395863285", "username":"admin", "password":"admin", "role":"admin"}
         ]
         col_users.insert_many(dict_user)
 

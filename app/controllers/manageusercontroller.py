@@ -13,9 +13,9 @@ class ManageUserController:
                 all_user.append(i)
         return all_user
 
-    def addUser(self, name, address, email, username, password):
+    def addUser(self, name, address, email, username, password, phone):
         role = 'user'
-        return self.user.add(name, address, email, username, password, role)
+        return self.user.add(name, address, email, username, password, phone, role)
     
     def deleteUser(self, username):
         u = User(username)
