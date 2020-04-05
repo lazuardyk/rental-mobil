@@ -111,7 +111,7 @@ class HomeAdmin_Window(object):
         for i in range(len(self.tabledata)):
             count = 0
             for key, value in self.tabledata[i].items():
-                print(key, value)
+                # print(key, value)
                 item = QtWidgets.QTableWidgetItem()
                 item.setTextAlignment(QtCore.Qt.AlignCenter)
                 if key == "buyer_name":
