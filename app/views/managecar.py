@@ -211,7 +211,7 @@ class ManageCar_Window(object):
         for i in range(len(self.allcar)):
             count = 0
             for key, value in self.allcar[i].items():
-                print(key, value)
+                # print(key, value)
                 if key == "_id":
                     continue
                 item = QtWidgets.QTableWidgetItem()
@@ -282,7 +282,6 @@ class ManageCar_Window(object):
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+model+"</span></p></body></html>"))
     
     def pushDeleteCar(self):
-        print(self.id_car)
         self.carcontroller.deleteCar(self.id_car)
         self.MainWindow.close()
         self.popupSuccess()

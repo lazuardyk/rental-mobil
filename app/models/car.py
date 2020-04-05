@@ -78,8 +78,4 @@ class Car:
     def setPrice(self, price_per_day):
         new = { "$set": { "price_per_day": price_per_day } }
         return self.col_cars.update_one({"_id":self.id}, new)
-    
-if __name__ == "__main__":
-    a = Car("5e892b718be409be4ad9e085")
-    a.deleteThisCar()
 
