@@ -1,23 +1,19 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from app.controllers.manageadmincontroller import ManageAdminController
 
 
 class ManageAdmin_Window(object):
-
     def __init__(self):
-        self.manageadmincontroller = ManageAdminController()
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
         self.MainWindow.show()
-
+        
     def setupUi(self, MainWindow):
-        self.alladmin = self.manageadmincontroller.showAllAdmin()
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(742, 608)
+        MainWindow.resize(734, 578)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(380, 370, 211, 41))
+        self.label.setGeometry(QtCore.QRect(380, 370, 251, 41))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(280, 410, 101, 16))
@@ -29,7 +25,7 @@ class ManageAdmin_Window(object):
         self.label_3.setGeometry(QtCore.QRect(440, 410, 101, 16))
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(580, 470, 81, 16))
+        self.label_4.setGeometry(QtCore.QRect(580, 410, 81, 16))
         self.label_4.setObjectName("label_4")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_2.setGeometry(QtCore.QRect(440, 440, 113, 20))
@@ -47,17 +43,17 @@ class ManageAdmin_Window(object):
         self.lineEdit_5.setGeometry(QtCore.QRect(440, 500, 113, 20))
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(410, 540, 111, 41))
+        self.pushButton.setGeometry(QtCore.QRect(580, 500, 111, 41))
         self.pushButton.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.pushButton.setObjectName("pushButton")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(310, 10, 131, 41))
         self.label_7.setObjectName("label_7")
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(60, 60, 631, 291))
+        self.tableWidget.setGeometry(QtCore.QRect(130, 60, 511, 291))
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(5)
-        self.tableWidget.setRowCount(len(self.alladmin))
+        self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -68,9 +64,7 @@ class ManageAdmin_Window(object):
         self.tableWidget.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(4, item)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(120)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
-        self.tableWidget.verticalHeader().setVisible(False)
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(40, 370, 231, 41))
         self.label_8.setObjectName("label_8")
@@ -85,14 +79,8 @@ class ManageAdmin_Window(object):
         self.pushButton_3.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.pushButton_3.setObjectName("pushButton_3")
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(580, 500, 141, 41))
+        self.textEdit.setGeometry(QtCore.QRect(580, 440, 141, 41))
         self.textEdit.setObjectName("textEdit")
-        self.lineEdit_7 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_7.setGeometry(QtCore.QRect(580, 440, 113, 20))
-        self.lineEdit_7.setObjectName("lineEdit_7")
-        self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(580, 410, 101, 16))
-        self.label_10.setObjectName("label_10")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -103,7 +91,7 @@ class ManageAdmin_Window(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Rental Mobil - Kelola User"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Rental Mobil - Kelola Admin"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Form Tambah Admin</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Username:</span></p></body></html>"))
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nama:</span></p></body></html>"))
@@ -111,7 +99,6 @@ class ManageAdmin_Window(object):
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Email:</span></p></body></html>"))
         self.label_6.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nomor HP:</span></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "Tambah"))
-        self.pushButton.clicked.connect(self.pushAddAdmin)
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Daftar Admin</span></p></body></html>"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Username"))
@@ -123,62 +110,16 @@ class ManageAdmin_Window(object):
         item.setText(_translate("MainWindow", "Email"))
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Nomor HP"))
-        for i in range(len(self.alladmin)):
-            count = 0
-            for key, value in self.alladmin[i].items():
-                # print(key, value)
-                item = QtWidgets.QTableWidgetItem()
-                item.setTextAlignment(QtCore.Qt.AlignCenter)
-                if key == "username":
-                    self.tableWidget.setItem(i, 0, item)
-                    item = self.tableWidget.item(i, 0)
-                elif key == "name":
-                    self.tableWidget.setItem(i, 1, item)
-                    item = self.tableWidget.item(i, 1)
-                elif key == "address":
-                    self.tableWidget.setItem(i, 2, item)
-                    item = self.tableWidget.item(i, 2)
-                elif key == "email":
-                    self.tableWidget.setItem(i, 3, item)
-                    item = self.tableWidget.item(i, 3)
-                elif key =="phone":
-                    self.tableWidget.setItem(i, 4, item)
-                    item = self.tableWidget.item(i, 4)
-                lst = ["username", "name", "address", "email", "phone"]
-                if key in lst:
-                    item.setText(_translate("MainWindow", str(value)))
-                    count += 1
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Form Hapus Admin</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Username:</span></p></body></html>"))
         self.pushButton_3.setText(_translate("MainWindow", "Hapus"))
-        self.pushButton_3.clicked.connect(self.pushDeleteAdmin)
-        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Password:</span></p></body></html>"))
-    
-    def pushAddAdmin(self):
-        username = self.lineEdit.text()
-        name = self.lineEdit_2.text()
-        address = self.textEdit.toPlainText()
-        email = self.lineEdit_4.text()
-        hp = self.lineEdit_5.text()
-        password = self.lineEdit_7.text()
-        self.manageadmincontroller.addAdmin(name,address,email,username,password,hp)
-        self.MainWindow.close()
-        self.popupSuccess()
 
-    def pushDeleteAdmin(self):
-        username = self.lineEdit_6.text()
-        self.manageadmincontroller.deleteAdmin(username)
-        self.MainWindow.close()
-        self.popupSuccess()
-    
-    def popupSuccess(self):
-        msg = QtWidgets.QMessageBox()
-        msg.setWindowTitle("Rental Mobil - Success")
-        msg.setIcon(QtWidgets.QMessageBox.Information)
-        msg.setText("Sukses!")
-        msg.exec_()
-        self.MainWindow = QtWidgets.QMainWindow()
-        self.setupUi(self.MainWindow)
-        self.MainWindow.show()
-    
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

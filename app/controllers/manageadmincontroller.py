@@ -13,9 +13,9 @@ class ManageAdminController:
                 alladmin.append(i)
         return alladmin
 
-    def addAdmin(self, name, address, email, username, password):
+    def addAdmin(self, name, address, email, username, password, phone):
         role = 'admin'
-        return self.user.add(name, address, email, username, password, role)
+        return self.user.add(name, address, email, username, password, phone, role)
     
     def deleteAdmin(self, username):
         u = User(username)
