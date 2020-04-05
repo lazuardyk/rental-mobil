@@ -18,15 +18,11 @@ class HomeUserController:
         return self.car.showAll()
 
     def showAllPlatCar(self):
-        # allplat = {}
         allplat = []
         allcar = self.showAllCar()
         for i in allcar:
             allplat.append({i['license_plate']:i['_id']})
-            # allplat[i['license_plate']] = i['_id']
         return allplat
-        # for key,value in allplat.items():
-        #     print(key, value)
     
     def getBrandCar(self, id):
         c = Car(id)
