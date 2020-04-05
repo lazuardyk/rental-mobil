@@ -8,11 +8,13 @@ class HomeUser_Window(object):
     def __init__(self, username):
         self.username = username
         self.homeusercontroller = HomeUserController(self.username)
+        self.name = self.homeusercontroller.getNameUser()
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
         self.MainWindow.show()
 
     def setupUi(self, MainWindow):
+        self.duration = 1
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(741, 597)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -85,7 +87,7 @@ class HomeUser_Window(object):
         self.lineEdit_6.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.label_13 = QtWidgets.QLabel(self.centralwidget)
-        self.label_13.setGeometry(QtCore.QRect(200, 460, 111, 20))
+        self.label_13.setGeometry(QtCore.QRect(200, 460, 181, 20))
         self.label_13.setObjectName("label_13")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(200, 220, 81, 20))
@@ -157,12 +159,12 @@ class HomeUser_Window(object):
         self.comboBox.setItemText(4, _translate("MainWindow", "5 hari"))
         self.comboBox.setItemText(5, _translate("MainWindow", "6 hari"))
         self.comboBox.setItemText(6, _translate("MainWindow", "7 hari"))
-        self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Rp100.000</span></p></body></html>"))
+        self.comboBox.currentIndexChanged.connect(self.durationComboChanged)
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Merek Mobil:</span></p></body></html>"))
         self.pushButton_2.setText(_translate("MainWindow", "Submit Data"))
         self.pushButton_2.clicked.connect(self.pushAddTransaction)
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Alamat:</span></p></body></html>"))
-        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Selamat Datang, Lazuardy Khatulistiwa (User)</span></p></body></html>"))
+        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Selamat Datang, "+self.name+" (User)</span></p></body></html>"))
         self.label_15.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Pilih No Polisi Mobil:</span></p></body></html>"))
 
         self.list_plat = self.homeusercontroller.showAllPlatCar()
@@ -178,10 +180,21 @@ class HomeUser_Window(object):
         #     index_plat += 1
         # self.comboBox_3.setItemText(0, _translate("MainWindow", "B 1234 ABC"))
         self.comboBox_3.currentIndexChanged.connect(self.platComboChanged)
+        if len(self.list_plat) != 0:
+            plat_dict = self.list_plat[0]
+            for key, value in plat_dict.items():
+                self.id_car = value
+                id_plat = value
+            brand = self.homeusercontroller.getBrandCar(id_plat)
+            model = self.homeusercontroller.getModelCar(id_plat)
+            color = self.homeusercontroller.getColorCar(id_plat)
+            self.pricecar_int = self.homeusercontroller.getPriceCar(id_plat)
+            price = self.rupiah_format(self.pricecar_int)
+            self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+brand+"</span></p></body></html>"))
+            self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+color+"</span></p></body></html>"))
+            self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+model+"</span></p></body></html>"))
+            self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+price+"</span></p></body></html>"))
         self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Warna Mobil:</span></p></body></html>"))
-        self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Toyota</span></p></body></html>"))
-        self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Hitam</span></p></body></html>"))
-        self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Avanza</span></p></body></html>"))
         self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Model Mobil:</span></p></body></html>"))
 
     def pushManageCar(self):
@@ -196,11 +209,23 @@ class HomeUser_Window(object):
     def pushAddTransaction(self):
         buyer_name = self.lineEdit_4.text()
         buyer_ktp = self.lineEdit_5.text()
-        buyer_birthday = self.dateEdit_2.date().toPyDate()
-        date_buy = self.dateEdit.date().toPyDate()
+        buyer_birthday = self.dateEdit_2.date().toPyDate().strftime("%d-%m-%Y")
+        date_buy_py = self.dateEdit.date().toPyDate()
+        date_buy = date_buy_py.strftime("%d-%m-%Y")
         buyer_hp = self.lineEdit_6.text()
         buyer_address = self.textEdit.toPlainText()
+        self.homeusercontroller.addTransaction(self.id_car, )
         print(buyer_name, buyer_ktp, buyer_birthday, date_buy, buyer_hp, buyer_address)
+    
+    def popupSuccess(self):
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Rental Mobil - Success")
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Sukses!")
+        msg.exec_()
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.MainWindow)
+        self.MainWindow.show()
 
     def platComboChanged(self, value):
         plat_dict = self.list_plat[value]
@@ -216,4 +241,11 @@ class HomeUser_Window(object):
         self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+brand+"</span></p></body></html>"))
         self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+color+"</span></p></body></html>"))
         self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+model+"</span></p></body></html>"))
+        self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+price+"</span></p></body></html>"))
+    
+    def durationComboChanged(self, value):
+        _translate = QtCore.QCoreApplication.translate
+        self.duration = value+1
+        self.pricecar_int *= self.duration
+        price = self.rupiah_format(self.pricecar_int)
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+price+"</span></p></body></html>"))

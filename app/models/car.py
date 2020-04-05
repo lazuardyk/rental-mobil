@@ -24,7 +24,7 @@ class Car:
     
     def deleteThisCar(self):
         query = { "_id": self.id }
-        return self.col_users.delete_one(query)
+        return self.col_cars.delete_one(query)
 
     def getId(self):
         return self.id
@@ -80,6 +80,6 @@ class Car:
         return self.col_cars.update_one({"_id":self.id}, new)
     
 if __name__ == "__main__":
-    a = Car()
-    print(a.showAll()[0]['_id'])
+    a = Car("5e892b718be409be4ad9e085")
+    a.deleteThisCar()
 

@@ -5,12 +5,12 @@ import locale
 class ManageCar_Window(object):
     def __init__(self):
         self.carcontroller = ManageCarController()
-        self.allcar = self.carcontroller.showAllCar()
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
         self.MainWindow.show()
         
     def setupUi(self, MainWindow):
+        self.allcar = self.carcontroller.showAllCar()
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(858, 615)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -60,7 +60,7 @@ class ManageCar_Window(object):
         self.tableWidget.setGridStyle(QtCore.Qt.SolidLine)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(6)
-        self.tableWidget.setRowCount(2)
+        self.tableWidget.setRowCount(len(self.allcar))
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -211,7 +211,7 @@ class ManageCar_Window(object):
         for i in range(len(self.allcar)):
             count = 0
             for key, value in self.allcar[i].items():
-                # print(key, value)
+                print(key, value)
                 if key == "_id":
                     continue
                 item = QtWidgets.QTableWidgetItem()
@@ -241,6 +241,7 @@ class ManageCar_Window(object):
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Form Hapus Mobil</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nomor Polisi:</span></p></body></html>"))
         self.pushButton_3.setText(_translate("MainWindow", "Hapus"))
+        self.pushButton_3.clicked.connect(self.pushDeleteCar)
         self.list_plat = self.carcontroller.showAllPlatCar()
         index_plat = 0
         self.id_car = 0
@@ -263,8 +264,10 @@ class ManageCar_Window(object):
         model = self.lineEdit_2.text()
         production_year = self.lineEdit_5.text()
         license_plate = self.lineEdit_3.text()
-        price = self.label_6.text()
+        price = int(self.lineEdit_6.text())
         self.carcontroller.addCar(brand, model, color, license_plate, price, production_year)
+        self.MainWindow.close()
+        self.popupSuccess()
     
     def platComboChanged(self, value):
         # self.list_plat = self.carcontroller.showAllPlatCar()
@@ -279,6 +282,19 @@ class ManageCar_Window(object):
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+model+"</span></p></body></html>"))
     
     def pushDeleteCar(self):
+        print(self.id_car)
         self.carcontroller.deleteCar(self.id_car)
+        self.MainWindow.close()
+        self.popupSuccess()
+    
+    def popupSuccess(self):
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Rental Mobil - Success")
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Sukses!")
+        msg.exec_()
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.MainWindow)
+        self.MainWindow.show()
     
 
