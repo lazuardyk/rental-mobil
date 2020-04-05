@@ -103,7 +103,7 @@ class ManageAdmin_Window(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Rental Mobil - Kelola User"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Rental Mobil - Kelola Admin"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Form Tambah Admin</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Username:</span></p></body></html>"))
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nama:</span></p></body></html>"))

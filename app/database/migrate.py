@@ -31,8 +31,8 @@ class Migrate:
         col_transactions.insert_many(dict_transactions)
 
         
-        print(client.list_database_names())
-        print(db.list_collection_names())
+        # print(client.list_database_names())
+        # print(db.list_collection_names())
 
 if __name__ == "__main__":
     m = Migrate()
