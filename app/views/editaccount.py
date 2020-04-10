@@ -1,0 +1,93 @@
+from app.controllers.editaccountcontroller import EditAccountController
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class EditAccount_Window(object):
+    def __init__(self, username):
+        self.username = username
+        self.editaccountcontroller = EditAccountController(self.username)
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.MainWindow)
+        self.MainWindow.show()
+
+    def setupUi(self, MainWindow):
+        self.name = self.editaccountcontroller.getName()
+        self.email = self.editaccountcontroller.getEmail()
+        self.address = self.editaccountcontroller.getAddress()
+        self.phone = self.editaccountcontroller.getPhone()
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(331, 336)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(90, 20, 161, 31))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(30, 80, 51, 21))
+        self.label_2.setObjectName("label_2")
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(100, 80, 171, 20))
+        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_2.setGeometry(QtCore.QRect(100, 120, 171, 20))
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(30, 120, 51, 21))
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(30, 160, 51, 21))
+        self.label_4.setObjectName("label_4")
+        self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_3.setGeometry(QtCore.QRect(100, 160, 171, 20))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(30, 200, 51, 21))
+        self.label_5.setObjectName("label_5")
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setGeometry(QtCore.QRect(100, 200, 171, 61))
+        self.textEdit.setObjectName("textEdit")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(110, 280, 101, 31))
+        self.pushButton.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";")
+        self.pushButton.setObjectName("pushButton")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.lineEdit.setText(self.name)
+        self.lineEdit_2.setText(self.email)
+        self.lineEdit_3.setText(self.phone)
+        self.textEdit.setText(self.address)
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Edit Informasi Akun</span></p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nama:</span></p></body></html>"))
+        self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Email:</span></p></body></html>"))
+        self.label_4.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">No HP:</span></p></body></html>"))
+        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Alamat:</span></p></body></html>"))
+        self.pushButton.setText(_translate("MainWindow", "Ubah"))
+        self.pushButton.clicked.connect(self.pushEdit)
+    
+    def pushEdit(self):
+        name = self.lineEdit.text()
+        email = self.lineEdit_2.text()
+        phone = self.lineEdit_3.text()
+        address = self.textEdit.toPlainText()
+        self.editaccountcontroller.editAkun(name, email, phone, address)
+        self.MainWindow.close()
+        self.popupSuccess()
+    
+    def popupSuccess(self):
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Rental Mobil - Success")
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Sukses!")
+        msg.exec_()
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.MainWindow)
+        self.MainWindow.show()

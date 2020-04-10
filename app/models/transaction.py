@@ -24,7 +24,7 @@ class Transaction:
     
     def deleteThisTransaction(self):
         query = { "_id": self.id }
-        return self.col_users.delete_one(query)
+        return self.col_transactions.delete_one(query)
 
     def getId(self):
         return self.id

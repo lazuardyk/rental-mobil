@@ -33,4 +33,12 @@ class HomeAdminController:
     def getNameUser(self):
         return self.user.getName()
     
+    def deleteTransaction(self, no):
+        indeks = int(no)-1
+        alltransaction = self.showAllTransaction()
+        transaction = alltransaction[indeks]
+        id_transaction = transaction['_id']
+        t = Transaction(id_transaction)
+        t.deleteThisTransaction()
+
     

@@ -101,27 +101,6 @@ class ManageCar_Window(object):
         font.setWeight(75)
         item.setFont(font)
         self.tableWidget.setHorizontalHeaderItem(5, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(0, 0, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(0, 1, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(0, 2, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(0, 3, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(0, 4, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(0, 5, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.tableWidget.setItem(1, 0, item)
         self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(109)
         self.tableWidget.horizontalHeader().setSortIndicatorShown(False)
@@ -144,7 +123,6 @@ class ManageCar_Window(object):
         self.comboBox.setGeometry(QtCore.QRect(40, 460, 121, 31))
         self.comboBox.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.comboBox.setObjectName("comboBox")
-        # self.comboBox.addItem("")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(190, 430, 101, 16))
         self.label_10.setObjectName("label_10")
@@ -190,10 +168,6 @@ class ManageCar_Window(object):
         self.pushButton.clicked.connect(self.pushAddCar)
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Daftar Mobil</span></p></body></html>"))
         self.tableWidget.setSortingEnabled(False)
-        item = self.tableWidget.verticalHeaderItem(0)
-        item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget.verticalHeaderItem(1)
-        item.setText(_translate("MainWindow", "2"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Merek Mobil"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -223,28 +197,19 @@ class ManageCar_Window(object):
                 else:
                     item.setText(_translate("MainWindow", str(value)))
                 count += 1
-        # item = self.tableWidget.item(0, 0)
-        # item.setText(_translate("MainWindow", "Toyota"))
-        # item = self.tableWidget.item(0, 1)
-        # item.setText(_translate("MainWindow", "Avanza"))
-        # item = self.tableWidget.item(0, 2)
-        # item.setText(_translate("MainWindow", "B 123 K"))
-        # item = self.tableWidget.item(0, 3)
-        # item.setText(_translate("MainWindow", "Hitam"))
-        # item = self.tableWidget.item(0, 4)
-        # item.setText(_translate("MainWindow", "2010"))
-        # item = self.tableWidget.item(0, 5)
-        # item.setText(_translate("MainWindow", "100000"))
-        # item = self.tableWidget.item(1, 0)
-        # item.setText(_translate("MainWindow", "Daihatsu"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Form Hapus Mobil</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Nomor Polisi:</span></p></body></html>"))
         self.pushButton_3.setText(_translate("MainWindow", "Hapus"))
         self.pushButton_3.clicked.connect(self.pushDeleteCar)
         self.list_plat = self.carcontroller.showAllPlatCar()
+        
+        if len(self.allcar) > 0:
+            for key, value in self.allcar[0].items():
+                if key == "_id":
+                    self.id_car = value
+
         index_plat = 0
-        self.id_car = 0
         for i in self.list_plat:
             self.comboBox.addItem("")
             for key, value in i.items():

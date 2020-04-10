@@ -65,6 +65,16 @@ class User:
         new = { "$set": { "email": email } }
         return self.col_users.update_one({"username":self.username}, new)
     
+    def getPhone(self):
+        get = self.col_users.find_one({"username":self.username}, {"phone" : 1})
+        if get == None:
+            return None
+        return get['phone']
+
+    def setPhone(self, phone):
+        new = { "$set": { "phone": phone } }
+        return self.col_users.update_one({"username":self.username}, new)
+    
     def getPassword(self):
         get = self.col_users.find_one({"username":self.username}, {"password" : 1})
         if get == None:

@@ -25,7 +25,7 @@ class Migrate:
         col_transactions = db["transactions"]
 
         dict_transactions = [
-            {"id_car": idinserted_cars[0], "duration":"2", "buyer_name": "Laz buyer", "buyer_address":"Jl Daksin 123", "buyer_phone": "081395863941", "buyer_idcard":"3306124403910302", "price_total": 200000}
+            {"id_car": idinserted_cars[0], "rent_date":"15-04-2020", "duration":"2", "buyer_name": "Laz buyer", "buyer_address":"Jl Daksin 123", "buyer_phone": "081395863941", "buyer_idcard":"3306124403910302", "buyer_birth":"10-10-2000", "price_total": 200000}
         ]
 
         col_transactions.insert_many(dict_transactions)

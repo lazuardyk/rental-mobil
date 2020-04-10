@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from app.views.managecar import ManageCar_Window
+from app.views.editaccount import EditAccount_Window
 from app.controllers.homeusercontroller import HomeUserController
 import locale
 
@@ -24,7 +25,7 @@ class HomeUser_Window(object):
         self.pushButton.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";")
         self.pushButton.setObjectName("pushButton")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(170, 60, 371, 41))
+        self.label.setGeometry(QtCore.QRect(200, 60, 371, 41))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(410, 120, 111, 16))
@@ -96,6 +97,10 @@ class HomeUser_Window(object):
         self.pushButton_2.setGeometry(QtCore.QRect(420, 520, 171, 41))
         self.pushButton_2.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(20, 50, 131, 31))
+        self.pushButton_3.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
+        self.pushButton_3.setObjectName("pushButton_3")
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(410, 390, 47, 13))
         self.label_9.setObjectName("label_9")
@@ -163,6 +168,8 @@ class HomeUser_Window(object):
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Merek Mobil:</span></p></body></html>"))
         self.pushButton_2.setText(_translate("MainWindow", "Submit Data"))
         self.pushButton_2.clicked.connect(self.pushAddTransaction)
+        self.pushButton_3.setText(_translate("MainWindow", "Edit Informasi Akun"))
+        self.pushButton_3.clicked.connect(self.pushEditAccount)
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Alamat:</span></p></body></html>"))
         self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Selamat Datang, "+self.name+" (User)</span></p></body></html>"))
         self.label_15.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Pilih No Polisi Mobil:</span></p></body></html>"))
@@ -174,11 +181,6 @@ class HomeUser_Window(object):
             for key, value in i.items():
                 self.comboBox_3.setItemText(index_plat, _translate("MainWindow", key))
             index_plat += 1
-        # for key,value in dict_plat.items():
-        #     self.comboBox_3.addItem("")
-        #     self.comboBox_3.setItemText(index_plat, _translate("MainWindow", key))
-        #     index_plat += 1
-        # self.comboBox_3.setItemText(0, _translate("MainWindow", "B 1234 ABC"))
         self.comboBox_3.currentIndexChanged.connect(self.platComboChanged)
         if len(self.list_plat) != 0:
             plat_dict = self.list_plat[0]
@@ -201,6 +203,9 @@ class HomeUser_Window(object):
     def pushManageCar(self):
         self.managecar = ManageCar_Window()
     
+    def pushEditAccount(self):
+        self.editaccount = EditAccount_Window(self.username)
+
     def rupiah_format(self, angka):
         desimal = 2
         locale.setlocale(locale.LC_NUMERIC, 'IND')
