@@ -4,8 +4,9 @@ Merupakan aplikasi desktop untuk membantu manajemen rental mobil
 #### Hal yang Dibutuhkan:
 - Python 3 (https://www.python.org/downloads/)
 - MongoDB (https://www.mongodb.com/download-center/community)
-- Package python berupa: pyqt5, pymongo. (**akan otomatis diinstall di setup**)
-note: Pastikan python dan pip bisa dijalankan di cmd. (https://datatofish.com/add-python-to-windows-path/)
+- Package python berupa: pyqt5, pymongo. (**akan otomatis diinstall di setup**)  
+  
+**note**: Pastikan python dan pip bisa dijalankan di cmd. (https://datatofish.com/add-python-to-windows-path/)
 
 #### Cara Pakai:
 - Jalankan ```setup.py``` untuk pertama kali. Dengan tujuan menginstall package yang diperlukan dan membuat database.
