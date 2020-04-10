@@ -189,6 +189,7 @@ class HomeUser_Window(object):
             model = self.homeusercontroller.getModelCar(id_plat)
             color = self.homeusercontroller.getColorCar(id_plat)
             self.pricecar_int = self.homeusercontroller.getPriceCar(id_plat)
+            self.price_total = self.pricecar_int
             price = self.rupiah_format(self.pricecar_int)
             self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+brand+"</span></p></body></html>"))
             self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">"+color+"</span></p></body></html>"))
@@ -247,6 +248,6 @@ class HomeUser_Window(object):
     def durationComboChanged(self, value):
         _translate = QtCore.QCoreApplication.translate
         self.duration = value+1
-        self.pricecar_int *= self.duration
-        price = self.rupiah_format(self.pricecar_int)
+        self.price_total = self.pricecar_int * self.duration
+        price = self.rupiah_format(self.price_total)
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+price+"</span></p></body></html>"))
