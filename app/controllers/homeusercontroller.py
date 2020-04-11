@@ -11,8 +11,8 @@ class HomeUserController:
     def getNameUser(self):
         return self.user.getName()
     
-    def addTransaction(self, id_car, duration, buyer_name, buyer_address, buyer_phone, buyer_idcard, price_total):
-        return self.transaction.add(id_car, duration, buyer_name, buyer_address, buyer_phone, buyer_idcard, price_total)
+    def addTransaction(self, id_car, rent_date, duration, buyer_name, buyer_address, buyer_phone, buyer_idcard, buyer_birth, price_total):
+        return self.transaction.add(id_car, rent_date, duration, buyer_name, buyer_address, buyer_phone, buyer_idcard, buyer_birth, price_total)
 
     def showAllCar(self):
         return self.car.showAll()

@@ -220,7 +220,7 @@ class HomeUser_Window(object):
         date_buy = date_buy_py.strftime("%d-%m-%Y")
         buyer_hp = self.lineEdit_6.text()
         buyer_address = self.textEdit.toPlainText()
-        self.homeusercontroller.addTransaction(self.id_car, self.duration, buyer_name,buyer_address,buyer_hp,buyer_ktp,self.pricecar_int)
+        self.homeusercontroller.addTransaction(self.id_car, date_buy, self.duration, buyer_name,buyer_address,buyer_hp,buyer_ktp,buyer_birthday,self.pricecar_int)
         self.MainWindow.close()
         self.popupSuccess()
     

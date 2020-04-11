@@ -18,8 +18,8 @@ class Transaction:
     def getData(self):
         return self.col_transactions.find_one({"_id":self.id})
 
-    def add(self, id_car, duration, buyer_name, buyer_address, buyer_phone, buyer_idcard, price_total):
-        dict_transaction = {"id_car":id_car, "duration":duration, "buyer_name":buyer_name, "buyer_address":buyer_address, "buyer_phone":buyer_phone, "buyer_idcard":buyer_idcard, "price_total":price_total}
+    def add(self, id_car, rent_date, duration, buyer_name, buyer_address, buyer_phone, buyer_idcard, buyer_birth, price_total):
+        dict_transaction = {"id_car":id_car, "rent_date":rent_date, "duration":duration, "buyer_name":buyer_name, "buyer_address":buyer_address, "buyer_phone":buyer_phone, "buyer_idcard":buyer_idcard, "buyer_birth":buyer_birth, "price_total":price_total}
         return self.col_transactions.insert_one(dict_transaction)
     
     def deleteThisTransaction(self):
