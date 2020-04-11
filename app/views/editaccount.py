@@ -60,7 +60,7 @@ class EditAccount_Window(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Rental Mobil - Edit Akun"))
         self.lineEdit.setText(self.name)
         self.lineEdit_2.setText(self.email)
         self.lineEdit_3.setText(self.phone)
@@ -78,7 +78,7 @@ class EditAccount_Window(object):
         email = self.lineEdit_2.text()
         phone = self.lineEdit_3.text()
         address = self.textEdit.toPlainText()
-        self.editaccountcontroller.editAkun(name, email, phone, address)
+        self.editaccountcontroller.editAccount(name, email, phone, address)
         self.MainWindow.close()
         self.popupSuccess()
     

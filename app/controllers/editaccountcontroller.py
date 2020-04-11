@@ -17,7 +17,7 @@ class EditAccountController:
     def getPhone(self):
         return self.user.getPhone()
     
-    def editAkun(self, name, email, phone, address):
+    def editAccount(self, name, email, phone, address):
         self.user.setName(name)
         self.user.setEmail(email)
         self.user.setPhone(phone)
