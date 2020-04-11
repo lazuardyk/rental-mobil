@@ -1,9 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from app.controllers.managecarcontroller import ManageCarController
+# from app.views.homeuser import HomeUser_Window
 import locale
 
 class ManageCar_Window(object):
-    def __init__(self):
+    def __init__(self, callback=None):
+        if callback:
+            self.callback = callback
         self.carcontroller = ManageCarController()
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
@@ -252,6 +255,8 @@ class ManageCar_Window(object):
         self.popupSuccess()
     
     def popupSuccess(self):
+        if self.callback:
+            self.callback.refreshHome()
         msg = QtWidgets.QMessageBox()
         msg.setWindowTitle("Rental Mobil - Success")
         msg.setIcon(QtWidgets.QMessageBox.Information)
@@ -260,5 +265,4 @@ class ManageCar_Window(object):
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
         self.MainWindow.show()
-    
 

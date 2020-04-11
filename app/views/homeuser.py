@@ -201,7 +201,7 @@ class HomeUser_Window(object):
         self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Model Mobil:</span></p></body></html>"))
 
     def pushManageCar(self):
-        self.managecar = ManageCar_Window()
+        self.managecar = ManageCar_Window(self)
     
     def pushEditAccount(self):
         self.editaccount = EditAccount_Window(self.username)
@@ -256,3 +256,9 @@ class HomeUser_Window(object):
         self.price_total = self.pricecar_int * self.duration
         price = self.rupiah_format(self.price_total)
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+price+"</span></p></body></html>"))
+    
+    def refreshHome(self):
+        self.MainWindow.close()
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.MainWindow)
+        self.MainWindow.show()
