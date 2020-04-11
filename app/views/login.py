@@ -29,6 +29,7 @@ class Login_Window(object):
         self.label_3.setObjectName("label_3")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_2.setGeometry(QtCore.QRect(160, 280, 121, 21))
+        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(170, 340, 91, 31))
