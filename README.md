@@ -20,7 +20,7 @@ User:
 - Mengubah informasi akun
 
 Admin:
-- Melihat riwayat transaksi sewa mobil
+- Melihat dan menghapus riwayat transaksi sewa mobil
 - Melihat, menambahkan, dan menghapus mobil yang tersedia untuk di sewa
 - Melihat, menambahkan, dan menghapus User
 - Melihat, menambahkan, dan menghapus Admin
