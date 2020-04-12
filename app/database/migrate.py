@@ -16,8 +16,8 @@ class Migrate:
 
         col_cars = db["cars"]
         dict_cars = [
-            {"brand":"Toyota", "model":"Avanza", "color":"Merah", "license_plate":"B 374 K", "price_per_day":100000, "production_year": "2012"},
-            {"brand":"Daihatsu", "model":"Xenia", "color":"Silver", "license_plate":"B 373 K", "price_per_day":200000, "production_year": "2011"}
+            {"brand":"Toyota", "model":"Avanza", "color":"Merah", "license_plate":"B 374 K", "production_year": "2012", "price_per_day":100000},
+            {"brand":"Daihatsu", "model":"Xenia", "color":"Silver", "license_plate":"B 373 K", "production_year": "2012", "price_per_day":200000}
         ]
         inserted_cars = col_cars.insert_many(dict_cars)
         idinserted_cars = inserted_cars.inserted_ids

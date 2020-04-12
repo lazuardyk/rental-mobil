@@ -19,7 +19,7 @@ class Car:
         return self.col_cars.find_one({"_id":self.id})
 
     def add(self, brand, model, color, license_plate, price_per_day, production_year):
-        dict_car = {"brand":brand, "model":model, "color":color, "license_plate":license_plate, "price_per_day":price_per_day, "production_year": production_year}
+        dict_car = {"brand":brand, "model":model, "color":color, "license_plate":license_plate, "production_year": production_year, "price_per_day":price_per_day}
         return self.col_cars.insert_one(dict_car)
     
     def deleteThisCar(self):

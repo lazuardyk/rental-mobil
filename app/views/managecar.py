@@ -161,6 +161,7 @@ class ManageCar_Window(object):
         item.setText(_translate("MainWindow", "Harga Sewa Per Hari"))
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
+        # print(self.allcar)
         for i in range(len(self.allcar)):
             count = 0
             for key, value in self.allcar[i].items():
