@@ -27,4 +27,4 @@ Admin:
 - Mengubah informasi akun
 
 #### Video Pemakaian Aplikasi:
-Link Video: TBA
+Link Video: https://youtu.be/G9iFu5CWIZ8
